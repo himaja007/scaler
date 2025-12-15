@@ -1,0 +1,86 @@
+notes:
+.Hashtables are very similar to dictionaries in Python
+
+examples:
+1) => the population of different countries where country name is the key and 
+population is the value
+        eg: India : 4.9M
+            America : 2.4M
+            UK : 900K
+2) => name of all the states of a country
+        eg: India: andhra, telengana, karnataka,....
+            America: Nyc, washington DC, Texas, ...
+3) => population of each state in a country
+        eg: India: {Ap:500K, telengana: 600K, ..}
+            America: {nyc:1200K, DC:3000K, ...}
+
+.Hashmaps doesn't have order things can be arranged in a random order
+    operations: insertion, search, remove, update, size 
+.Hashsets => only store keys which has to be unique
+    operations: insertion, searching, remove, size
+
+PRACTICE PROBLEMS:
+Q1 ==>  given a Hashtable 
+    A:{1,-2,-3,1,-2,6,9,-2,-1,1,8,6}
+
+    for q queries give the frequency of a particular number
+
+    BASIC QUERY:    PARSE THE TABLE FOR EVERY QUERY AND TO THE 
+    TimeComplexity : Q*0(N)
+
+    BUILD A HASHMAP
+        A_hashmap={1:3, -2:3, -3:1, 6:2, 9:1, -1:1, 8:1}
+        then for every query just check if the key is present if so return the value
+        if not return 0
+                T.C:O(q+n)
+
+    pseudocode:
+    #creating a hash map
+    for (int i=0;i<n;i++){
+        if(arr[i]){
+
+        }
+        else{
+
+        }
+    }
+    for (int i=0;i<n;i++){
+        if(x is present in HM){
+            get the value
+        }
+        else{
+            return 0
+        }
+    }
+
+Q2 ==> Find the first non-repeting element reading from left to right
+        ar[6] = {1,2,3,1,2,5}       =>3
+        ar[8] = {4,3,3,2,5,6,4,5}   =>2
+        ar[7] = {2,6,8,4,7,2,9}     =>6
+    Basic approach : go to every element and check if there is duplicate
+    T.C = O(N^2)
+
+    Better Approach : create a hash map with the item as key and frequeny as value
+                    then taverse the array.
+    PSEUDOCODE:
+        T.C => O(N)
+        S.C => O(N)
+Q3 ==> give N array of element find the number of distinct elements
+        arr[5] : {3, 5, }
+        arr[7] : {6, 3, 7, 3, 8, 6, 9}
+
+    Better Approach: create a set and then return the size of the set
+
+Q4 ==> check if all the elements in the list are distinct in nature
+    Better Approach: create frequency hash map or hash set and check if the size of
+                    that table is equal to the size of the array
+
+Q5 ==> given N array elements, check if there exists a subarray with sum=0
+
+        arr = [2,2,1,-3,4,3,1,-2,-3,2]
+
+        ans subarrays = [-3,4,3,1,-2,-3], [2,1,-3]
+    Basic Approach: check all the subarrays
+    Better Approach: using prefix sums
+
+Q6 ==>
