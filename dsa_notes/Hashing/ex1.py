@@ -70,3 +70,63 @@ Enter Input Here
 Arg 2: An Integer Array, For e.g [1,2,3]
 Enter Input Here
 """
+# Approach 1: Brute Force
+"""A =[1, 2, 2, 1]
+B= [2, 3, 1, 2]
+new_list=[]
+for i in A:
+    for j in B:
+        if i==j:
+            new_list.append(i)
+            B.remove(j)
+print(new_list)"""
+
+"""# Approach 2: Using Hashing
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @return a list of integers
+    def solve(self, A, B):
+        from collections import Counter
+
+        freqA = Counter(A)
+        freqB = Counter(B)
+        ans = []
+
+        # iterate over smaller map for speed
+        if len(freqA) > len(freqB):
+            freqA, freqB = freqB, freqA
+
+        for x in freqA:
+            if x in freqB:
+                k = min(freqA[x], freqB[x])
+                ans.extend([x] * k)
+
+        return ans"""
+
+
+#Approach 3:
+class Solution:
+    # @param A : list of integers
+    # @param B : list of integers
+    # @return a list of integers
+    def solve(self, A, B):
+        freq_B = {}
+        for x in B:
+            if x in freq_B:
+                freq_B[x] += 1
+            else:
+                freq_B[x] = 1
+
+        lst = []
+        for x in A:
+            if x in freq_B and freq_B[x] > 0:
+                lst.append(x)
+                freq_B[x] -= 1
+
+        return lst
+
+A=[1, 2, 2, 1,3]
+B= [2, 3, 1, 2,3]
+s = Solution()
+print(s.solve(A,B))
