@@ -1,0 +1,16 @@
+Strongly vs Weakly type Languages
+JS -> Weakly
+Java -> Strongly
+
+in Strongly typed Languages the type check is happeing
+in weeker languages type check is not strict
+
+Statically and Dynamically Typed Languages
+static -> type checking at compile time (c, C++, Java)
+dynamic -> type checking happens at run time(JS, Python, Ruby, Php)
+
+let 
+const 
+var  ===>> way to create variables
+with let you can reassign values
+in const u cant re assign values
