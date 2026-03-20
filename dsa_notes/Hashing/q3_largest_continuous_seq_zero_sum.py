@@ -52,3 +52,38 @@ Example Explanation
 Expected Output
 Provide sample input and click run to see the correct output for the provided input. Use this to improve your problem understanding and test edge cases
 """
+class Solution:
+    # @param A : list of integers
+    # @return a list of integers
+    def lszero(self, A):
+        # Dictionary to store first occurrence of each prefix sum
+        prefix_sum_map = {0: -1}  # Initialize with 0 at index -1
+        current_sum = 0
+        max_length = 0
+        start_idx = 0
+        end_idx = -1
+        
+        # Iterate through the array
+        for i in range(len(A)):
+            current_sum += A[i]
+            
+            # If prefix sum already exists, we found a zero-sum subarray
+            if current_sum in prefix_sum_map:
+                length = i - prefix_sum_map[current_sum]
+                if length > max_length:
+                    max_length = length
+                    start_idx = prefix_sum_map[current_sum] + 1
+                    end_idx = i
+            else:
+                # Store first occurrence of this prefix sum
+                prefix_sum_map[current_sum] = i
+        
+        # Return the longest zero-sum subarray
+        if max_length == 0:
+            return []
+        return A[start_idx:end_idx + 1]
+s=Solution()
+A = [1,2,-2,4,-4]
+print(s.lszero(A))
+A=[1,2,3,-3,4,-4]
+print(s.lszero(A))
