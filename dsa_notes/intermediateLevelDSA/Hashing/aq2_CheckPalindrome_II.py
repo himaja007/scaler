@@ -41,3 +41,31 @@ Expected Output
 Provide sample input and click run to see the correct output for the provided
 input. Use this to improve your problem understanding and test edge cases
 """
+class Solution:
+    # @param A : string
+    # @return an integer
+    def solve(self, A):
+        freq = {}
+        
+        for ch in A:
+            freq[ch] = freq.get(ch, 0) + 1
+        
+        odd_count = 0
+        for count in freq.values():
+            if count % 2 != 0:
+                odd_count += 1
+        
+        return 1 if odd_count <= 1 else 0
+s = Solution()
+A = "abcde"
+print(s.solve(A))  # Output: 0
+A = "abbaee"
+print(s.solve(A))  # Output: 1
+A = "aabbcc"
+print(s.solve(A))  # Output: 1 (can be rearranged to "abcabc")
+A = "aabbccd"
+print(s.solve(A))  # Output: 1 (can be rearranged to "abcdcba")
+A = "aabbccdd"
+print(s.solve(A))  # Output: 1 (can be rearranged to "abcdcdba")
+A = "aabbccdde"
+print(s.solve(A))  # Output: 0 (more than one character has odd frequency)

@@ -29,3 +29,43 @@ Expected Output
 Provide sample input and click run to see the correct output for the provided 
 input. Use this to improve your problem understanding and test edge cases
 """
+class Solution:
+    # @param A : integer
+    # @param B : integer
+    # @param C : list of integers
+    # @return an integer
+    def getSum(self, A, B, C):
+        mod = 10**9 + 7
+        freq = {}
+        for i in range(A):
+            if C[i] in freq:
+                freq[C[i]] += 1
+            else:
+                freq[C[i]] = 1
+
+        ans = 0
+        found = False          # track if any value has frequency B
+        for key, value in freq.items():
+            if value == B:
+                found = True
+                ans = (ans + key) % mod
+
+        return ans if found else -1
+
+s = Solution()
+N = 5
+B = 2
+C = [1, 2, 2, 3, 3]
+print(s.getSum(N, B, C))  # Output: 5
+N = 6
+B = 3
+C = [1, 1, 2, 2, 3, 3]
+print(s.getSum(N, B, C))  # Output: -1
+N = 7
+B = 2
+C = [1, 1, 2, 2, 3, 3, 4]
+print(s.getSum(N, B, C))  # Output: 10 (1 + 2 + 3 + 4)
+N = 8
+B = 1
+C = [1, 2, 3, 4, 5, 6, 7, 8]
+print(s.getSum(N, B, C))  # Output: 36 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8)

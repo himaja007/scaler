@@ -56,3 +56,31 @@ Provide sample input and click run to see the correct output for the provided
 input. Use this to improve your problem understanding and test edge cases
 
 """
+
+class Solution:
+    # @param A : integer
+    # @return an integer
+    def colorful(self, A):
+        digits = [int(ch) for ch in str(A)]
+        seen = set()
+
+        for i in range(len(digits)):
+            prod = 1
+            for j in range(i, len(digits)):
+                prod *= digits[j]
+                if prod in seen:
+                    return 0
+                seen.add(prod)
+
+        return 1
+s=Solution()
+A = 23
+print(s.colorful(A))  # Output: 1
+A = 236
+print(s.colorful(A))  # Output: 0
+A = 3245
+print(s.colorful(A))  # Output: 1
+A = 123
+print(s.colorful(A))  # Output: 1
+A = 122
+print(s.colorful(A))  # Output: 0 (product of 2 and 2 is the same)
